@@ -13,13 +13,20 @@ var instance: Callable = func():
 		"unsubscribe": func(c: Dictionary):
 			for index in range(observers.size()):
 				if observers[index].get("name") == c.get("name"):
-					observers.remove_at(index),
+					observers.remove_at(index)
+					break,
 
 		"notify": func(model: Dictionary):
 			for observer in observers:
 				if observer.get("name") == model.get("name"):
-					observer.get("method").call(model.get("name"), model.get("age"))
-					break,
+					# Formatação dos argumentos.
+					var args: Dictionary = {}
+					for arg in model:
+						if arg == "method": continue
+						
+						args[arg] = model[arg]
+					
+					return observer.get("method").call(args),
 	}
 
 func get_instance() -> Dictionary:
