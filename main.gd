@@ -4,14 +4,14 @@ var store = Observables.new().get_instance()
 var model_01: Dictionary = {
 	"name": "Amanda",
 	"age": 17,
-	"method": func(args: Dictionary):
-		print("A %s tem %s" % [ args.get("name"), args.get("age") ])
+	"method": func(name: String, age: int):
+		print("A %s tem %s" % [ name, age ])
 }
 var model_02: Dictionary = {
 	"name": "Camila",
 	"age": 22,
-	"method": func(args: Dictionary):
-		print("A %s tem %s" % [ args.get("name"), args.get("age") ])
+	"method": func(name: String, age: int):
+		print("A %s tem %s" % [ name, age ])
 }
 
 func _ready():

@@ -20,13 +20,14 @@ var instance: Callable = func():
 			for observer in observers:
 				if observer.get("name") == model.get("name"):
 					# Formatação dos argumentos.
-					var args: Dictionary = {}
+					var args: Array = []
 					for arg in model:
-						if arg == "method": continue
+						if arg == "method":
+							continue
 						
-						args[arg] = model[arg]
-					
-					return observer.get("method").call(args),
+						args.append(model[arg])
+
+					return observer.get("method").callv(args),
 	}
 
 func get_instance() -> Dictionary:
